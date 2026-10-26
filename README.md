@@ -130,7 +130,7 @@ The interface will be implemented using vanilla HTML, CSS, and JavaScript withou
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) and npm.
+- [Node.js](https://nodejs.org/) with [Corepack](https://nodejs.org/api/corepack.html).
 - [Google Chrome](https://www.google.com/chrome/).
 - Basic knowledge of JavaScript and Chrome extension development.
 
@@ -146,13 +146,16 @@ Replace `<your-repository-url>` with the URL of your GitHub repository.
 ### 2. Install Dependencies
 
 ```bash
-npm install
+corepack enable
+pnpm install
 ```
+
+The `packageManager` field pins pnpm to the project-supported version. Corepack will use that version automatically; enable Corepack once per Node.js installation if `pnpm` is not already available.
 
 ### 3. Start the Development Environment
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 The Vite development server is useful for developing the frontend. However, Chrome extension APIs and the background service worker must be tested within an extension-compatible build or development setup.
@@ -160,7 +163,7 @@ The Vite development server is useful for developing the frontend. However, Chro
 ### 4. Build the Extension
 
 ```bash
-npm run build
+pnpm build
 ```
 
 Vite's build configuration must include the extension's HTML entry points, Manifest V3 manifest, and background service worker. If an extension integration plugin is configured, such as CRXJS, it can help manage this process.
